@@ -34,7 +34,7 @@ button.addEventListener("click", () => {
     alert("uang saku minimal 100rb dan maksimal 1 Juta");
     return;
   }
-  let data1 = {
+  const data1 = {
     dataNama,
     dataUmur,
     dataUang,
@@ -51,8 +51,17 @@ tampil.addEventListener("click", () => {
     const listData = document.createElement("tr");
     listData.innerHTML = `<td>${data[i].dataNama}</td>
       <td>${data[i].dataUmur} </td>
-      <td>${data[i].dataUang}</td>`;
+      <td>${data[i].dataUang}</td> 
+      <td><button class ="hapus">Hapus</button></td>`;
     tabel.appendChild(listData);
+
+    //fungsi menghapus data
+    const deleteButton = listData.querySelector(".hapus");
+    deleteButton.addEventListener("click", () => {
+      // Menghapus baris data yang sesuai dengan tombol hapus yang ditekan
+      data.splice(i, 1); // Menghapus elemen dari array "data"
+      listData.remove(); // Menghapus elemen HTML dari tabel
+    });
   }
 
   //menampilkan resume
